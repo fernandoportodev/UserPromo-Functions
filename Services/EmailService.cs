@@ -1,4 +1,5 @@
 ﻿using UserPromo.Models;
+using static System.Net.WebRequestMethods;
 
 namespace UserPromo.Services;
 
@@ -10,7 +11,7 @@ public class EmailService : IEmailService
     public EmailService(HttpClient httpClient, IConfiguration config)
     {
         _httpClient = httpClient;
-        _functionUrl = config["AzureFunction:EmailFunctionUrl"];
+        _functionUrl = "http://localhost:7071/api/SendEmailFunction";
     }
 
     public async Task SendWelcomeEmailAsync(User user)
